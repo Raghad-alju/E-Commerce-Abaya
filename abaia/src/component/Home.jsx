@@ -9,7 +9,6 @@ import AD from './home compnents/AD';
 import Trending from './home compnents/Trending';
 
 function Home() {
-  const background=useRef();
 
  
   return (

@@ -87,7 +87,6 @@ export default function Products() {
   setTimeout(()=>setShowProducts(true),300)
 
   const [searchedList,setSearchedList]=useState([])
-  const [showSearchValues,setShowSearchdValue]=useState(false)
 
   function updateSearchList(list){
     setSearchedList(list)

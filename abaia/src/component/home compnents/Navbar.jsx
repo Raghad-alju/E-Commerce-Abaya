@@ -51,7 +51,7 @@ function Navbar() {
                             
                             <img className='block w-6 h-6 mr-2 max-md:h-5 max-md:w-5 md:mt-0 mt-3 max-md:mr-0 ' src={cartIcon} />
                             <div ref={counterRef} className={circleStyle}  onAnimationEnd={() => setEffect(false)}>{cart.cartContents.length}</div>
-                            <a onClick={()=>console.log(cart.cartContents)} href="#" className={listItemStyle}>Cart</a>
+                            <Link onClick={()=>console.log(cart.cartContents)} to="/cart" className={listItemStyle}>Cart</Link>
                         </div>
                    
                 <div className="hidden w-full md:block md:w-auto" id="navbar-default">

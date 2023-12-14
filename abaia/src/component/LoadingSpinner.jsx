@@ -1,11 +1,11 @@
 import React from "react";
 
 export default function LoadingSpinner({showProducts}) {
-  return(<div className=" absolute  justify-self-center justify-center top-1/2 w-8 h-8" role="status" hidden={showProducts}  >
+  return(<div className=" absolute justify-self-center  mt-24 w-8 h-8" role="status" hidden={showProducts}  >
     <svg
         
       aria-hidden="true"
-      class="inline w-10 h-10 text-gray-200 animate-spin fill-purple-600"
+      class="w-10 h-10  text-gray-200 animate-spin fill-purple-600"
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

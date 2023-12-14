@@ -22,7 +22,50 @@ export default function Cart({product}) {
   
     return (
       <>
-        <button onClick={()=>console.log(cart.cartContents)}> down</button>
+      <div className=' mt-36 lg:w-[60rem] lg:mx-auto mx-10  relative'>
+      <div className=" w-full h-auto  border-[1px] border-gray-400 p-10 rounded-lg  ">
+        <div className=" relative text-2xl font-primary mb-5">Cart Products</div>
+      {
+        
+        cart.cartContents.map((product)=>{
+          return(
+            <div className=" clear-both ">
+          <div className=" p-[0.5px] w-full  bg-gray-500 "></div>
+
+          <img className="h-20 w-20 float-left block my-5 rounded-md mr-6" src={product.img}/>
+          <div className=" relative my-5 h-20 font-secondry">
+          <p className=" text-lg font-semibold">{product.name}</p>
+          <p>{product.price}$</p>
+          <p> {product.quntity===1?'':'Quantity: '+product.quntity}</p>
+          <button className=" absolute bottom-12 right-16  w-6 h-6 justify-items-center rounded-full bg-blue-sky shadow-gray-500 shadow-sm hover:bg-gray-600">
+          <svg class="w-3 h-3 text-pastel-yellow m-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+          </svg>
+          </button>
+          <button className=" absolute bottom-3 right-16  w-6 h-6 justify-items-center rounded-full bg-blue-sky shadow-gray-500 shadow-sm hover:bg-gray-600">
+            
+            <svg class="w-3 h-3 text-pastel-yellow m-auto " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg></button>
+          </div>
+          </div>
+          )
+        }
+        )
+        
+      }
+      <div className=" clear-both my-14 p-[0.5px] w-3/4 mx-auto bg-gray-500 "></div>
+      <div className="flex">
+      <button className=" bg-blue-sky p-2 px-6 rounded-lg text-md font-primary text-pastel-yellow shadow-md shadow-gray-400 ml-20">Checkout</button>
+      <div className=" ml-10 font-secondry">
+        <p>total price:  </p>
+        <p>items</p>
+      </div>
+      </div>
+      </div>
+
+      </div>
+
   </>
     );
   }

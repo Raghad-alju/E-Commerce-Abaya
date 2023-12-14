@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { allProducts } from './Products'
 import SlideView from "./Product components/SlideView";
@@ -7,10 +8,12 @@ import cartIcon from './../svg icons/cart-2-svgrepo-com.png'
 export default function Product() {
     const params = useParams();
     const product = allProducts.find(p => p.id === params.prodId)
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      },[])
     return (
         <>
-            <div className=' mt-36 lg:w-[60rem] md:mx-auto mx-10  relative'>
+            <div className=' mt-36 lg:w-[60rem] lg:mx-auto mx-10  relative'>
 
 
 

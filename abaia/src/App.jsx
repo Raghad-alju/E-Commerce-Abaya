@@ -3,7 +3,8 @@ import React, { useRef, useState, createContext, useContext } from 'react';
 import Cart from './component/Cart.jsx'
 import Products from './component/Products.jsx';
 import Product from './component/Product.jsx';
-
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Root from './component/Root.js'
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/products/:catogorey/:prodId',
         element: <Product />
+      },
+      {
+        path: '/cart',
+        element: <Cart />
       },
 
     ]
@@ -71,13 +76,16 @@ function App() {
   return (
     <>
       <CartContext.Provider value={{ cartContents, addProductToCart }}>
-
-        <RouterProvider router={router} />
+        
+        <RouterProvider router={router} >
+        </RouterProvider>
 
       </CartContext.Provider>
     </>
 
   );
 }
+
+
 
 export default App;
