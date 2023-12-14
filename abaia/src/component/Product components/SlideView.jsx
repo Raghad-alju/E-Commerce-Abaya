@@ -12,7 +12,7 @@ export default function SlideView(){
     
         if(buttonDirection==='left'){
           return(
-        <button className="absolute left-0  top-20 -translate-x-8 max-sm:hidden mt-16  group focus:outline-none" onClick={() => slider?.current?.slickPrev()}>
+        <button className="absolute left-0  top-5 -translate-x-8 max-sm:hidden mt-16  group focus:outline-none" onClick={() => slider?.current?.slickPrev()}>
        
        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full  bg-gray-500  group-hover:bg-gray-800  group-focus:ring-1 group-focus:ring-gray-400  group-focus:outline-none">
               <svg class="w-4 h-4 text-white  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -25,7 +25,7 @@ export default function SlideView(){
       }
       if(buttonDirection==='right'){
         return(
-      <button className= "  absolute  top-20 right-0  translate-x-8 max-sm:hidden justify-end mt-16 group focus:outline-none" onClick={() => slider?.current?.slickNext()}>
+      <button className= "  absolute  top-5 right-0  translate-x-8 max-sm:hidden justify-end mt-16 group focus:outline-none" onClick={() => slider?.current?.slickNext()}>
   
       <span class="inline-flex items-center justify-center w-7 h-7 rounded-full  bg-gray-500  group-hover:bg-gray-800  group-focus:ring-1 group-focus:ring-gray-400  group-focus:outline-none">
               <svg class="w-4 h-4 text-white  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -72,7 +72,7 @@ export default function SlideView(){
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1
           }
         }
@@ -80,7 +80,7 @@ export default function SlideView(){
     };
     return(
     
-    <div className=" mx-auto md:w-[40rem] mt-32 clear-both">
+    <div className=" mx-auto md:w-[40rem] clear-both">
     <Slider ref={slider} {...settings} >
 
     {
@@ -92,7 +92,7 @@ export default function SlideView(){
             </a>
             <div class="p-5">
                 <a href="#">
-                <h5 class="mb-2 text-xl  tracking-tight text-gray-900   font-primary line-clamp-1">{product.name}</h5>
+                <h5 class="mb-2 lg:text-md text-xs  tracking-tight text-gray-900   font-primary line-clamp-1">{product.name}</h5>
                 </a>
                 
             </div>
