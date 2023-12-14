@@ -2,6 +2,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import {allProducts} from './Products'
+import SlideView from "./Product components/SlideView";
 export default function Product() {
   const params=useParams();
   const product= allProducts.find(p => p.id === params.prodId)
@@ -24,6 +25,8 @@ export default function Product() {
         Add to cart
     </button>
     </div>
+
+    <SlideView />
         </div>
     </>
     );
