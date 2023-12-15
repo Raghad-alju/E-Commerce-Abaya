@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 
 import colored from "../ProductLists/colored";
 import winter from "../ProductLists/winter";
@@ -28,7 +28,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import { useParams } from "react-router-dom";
 import cartIcon from "../svg icons/cart-2-svgrepo-com.png";
 import { CartContext } from "../App";
-import  BreadCrums  from './products components/BreadCrums';
+import BreadCrums from "./products components/BreadCrums";
 import Search from "./products components/Search";
 
 export const allProducts = [
@@ -75,32 +75,62 @@ export default function Products() {
       ];
       break;
   }
+
+
+
+
+
   const [sortedContents, setSortedcontents] = useState([...pageContents]);
+
+  const refsById = useMemo(() => {
+		const refs = {}
+		sortedContents.forEach((product) => {
+			refs[product.id] = React.createRef(null)
+		})
+    console.log(refs)
+		return refs
+	}, [])
+  
+
+  useEffect(()=>{ for(let i=0;i<refsById.length;i++){
+    console.log(refsById[i].current.className)}},[])
+    
+  
 
   useEffect(() => {
     setSortedcontents(pageContents);
     setShowProducts(false);
     clearTimeout();
+    for(let i=0;i<refsById.length;i++){
+      console.log(refsById[i].current.className)
+    // setTimeout(()=>{var val=refsById[i].current.className; console.log(val)},1000)
+    // clearTimeout()
+  }
   }, [params.catogorey]);
-  
-  const [showProducts,setShowProducts]=useState(false);
-  setTimeout(()=>setShowProducts(true),300)
 
-  const [searchedList,setSearchedList]=useState([])
+  const [showProducts, setShowProducts] = useState(false);
+  setTimeout(() => setShowProducts(true), 300);
 
-  function updateSearchList(list){
-    setSearchedList(list)
+  const [searchedList, setSearchedList] = useState([]);
+
+  function updateSearchList(list) {
+    setSearchedList(list);
   }
 
-function MainContainer({list}){
-    return(
+  
+  
+
+  function MainContainer({ list }) {
+    return (
       <>
-           {        
-        list.map((product) => {
-          
+        {list.map((product,index) => {
           return (
             
-            <div className=" bg-white border border-gray-200 rounded-lg shadow " hidden={!showProducts}>
+            <div 
+              style={{animationDelay: index / 25 + "s"}}
+              className={`bounce-in-top bg-white border border-gray-200 rounded-lg shadow `}
+              hidden={!showProducts}
+            >
               <a href="#">
                 <img class="rounded-t-lg" src={product.img} alt="" />
               </a>
@@ -125,15 +155,10 @@ function MainContainer({list}){
               </div>
             </div>
           );
-        })
-        
-      }
+        })}
       </>
-    )
-  
+    );
   }
-
-
 
   return (
     <>
@@ -142,9 +167,8 @@ function MainContainer({list}){
         <h3 className="mt-36 font-primary text-2xl text-gray-800 m-3">
           {params.catogorey}
         </h3>
-        <BreadCrums params={params}/>
-     
-      
+        <BreadCrums params={params} />
+
         {/*left bar*/}
         <div className="flex mt-12  rounded-xl ">
           <div className="flex w-[40rem] h-32 mx-2 rounded-lg mt-0   border-[0.1px] border-gray-300 max-md:hidden   ">
@@ -179,14 +203,14 @@ function MainContainer({list}){
           </div>
 
           {/*main container*/}
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-[165rem] " >
-           <LoadingSpinner showProducts={showProducts}/>
-           <MainContainer list={searchedList.length==0? sortedContents : searchedList}/>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-[165rem] ">
+            <LoadingSpinner showProducts={showProducts} />
+            <MainContainer
+              list={searchedList.length == 0 ? sortedContents : searchedList}
+            />
           </div>
         </div>
       </div>
     </>
   );
 }
-
-

@@ -43,7 +43,7 @@ export default function SlideView(){
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 5,
+      slidesToShow: 4,
       slidesToScroll: 1,
       initialSlide: 0,
       prevArrow: <SampleArrow buttonDirection={'left'}/>,
@@ -86,13 +86,13 @@ export default function SlideView(){
     {
         
       trendingProducts.map((product)=>{
-            return <div className=" bg-white border border-gray-200 rounded-lg shadow ">
+            return <div className=" bg-white border border-gray-200 rounded-lg shadow h-40 ">
             <a href="#">
-                <img class="rounded-t-lg" src={product.img} alt="" />
+                <img class="h-20 w-40 object-top object-cover rounded-t-lg" src={product.img} alt="" />
             </a>
             <div class="p-5">
                 <a href="#">
-                <h5 class="mb-2 lg:text-md text-xs  tracking-tight text-gray-900   font-primary line-clamp-1">{product.name}</h5>
+                <h5 class="mb-2 lg:text-lg text-xs  tracking-tight text-gray-900   font-primary ">{product.name}</h5>
                 </a>
                 
             </div>

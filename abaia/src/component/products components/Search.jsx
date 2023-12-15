@@ -6,8 +6,10 @@ export default function({updateSearchList}){
     function handleSearch(e){
 
         var value=e.target.value;
-        if(value==='')
+        if(value===''){
         updateSearchList([]);
+        return
+    }
         console.log('value',value)
         var searchedList= allProducts.filter((
             (p)=>{

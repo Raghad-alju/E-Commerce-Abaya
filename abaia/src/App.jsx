@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Root from './component/Root.js'
-export const CartContext = createContext({ cartContents: [], addProductToCart: () => { } });
+export const CartContext = createContext({ cartContents: [], addProductToCart: () => { },handleQuan:()=>{} });
 
 const router = createBrowserRouter([
 
@@ -72,10 +72,31 @@ function App() {
       setCartContents(tempList);
     }
   }
+  function handleQuan(index,op,productId){
+    var tempList=[...cartContents];
+    if(op==='del'){
+    if(tempList[index].quntity>1){
+    tempList[index].quntity--; 
+    console.log('delted quan',tempList)
+    setCartContents(tempList);}
+    else{
+
+      tempList=tempList.filter(p=>p.id!==productId)
+      console.log('new list',tempList)
+      setCartContents(tempList); 
+    }
+    }
+    
+    else{
+      tempList[index].quntity++;
+      setCartContents(tempList);
+    }
+    }
+  
 
   return (
     <>
-      <CartContext.Provider value={{ cartContents, addProductToCart }}>
+      <CartContext.Provider value={{ cartContents, addProductToCart,handleQuan }}>
         
         <RouterProvider router={router} >
         </RouterProvider>

@@ -16,12 +16,40 @@ module.exports = {
       'white-yellow': '#dccea6',
       'pastel-yellow':'#f4e89c'
     },
-    extend: {keyframes: {
+    extend: {
+      
+      keyframes: {
       beat: {
         '0%' :{transform:'scale(1)'},
          '25%': {transform: 'scale(1.04)'},
          '50%':{transform: 'scale(1)'},
 
+      },
+      bounceInTop:{
+        '0%':{transform: 'translateY(0px)',
+        delay:'ease-in',
+        opacity:'0'
+        
+      },
+        '38%':{ transform: 'translateY(-30px)',
+        delay:'ease-out'
+      },
+        '55%':{ transform: 'translateY(-15px)',
+        delay:'ease-in'
+      },
+        '72%':{ transform: 'translateY(0)',
+        delay:'ease-out',
+        opacity:'1'
+      }  
+        ,
+        '90%':{transform: 'translateY(0px)',
+        delay:'ease-out'
+      },
+
+        '100%':{ transform: 'translateY(0)',
+        delay:'ease-out',
+        
+      },
       },
       transform: {
         '0%':{transform: 'translate(0)'},
@@ -57,9 +85,12 @@ module.exports = {
       beat: 'beat 0.2s ',
       headShake: 'headShake 2s ease-out',
       transform: 'transform 1s',
-      scale: 'scale 0.5s'
+      scale: 'scale 0.5s',
+      bounceInTop:'bounceInTop 1.1s both ease-out'
     },
   },
 },
-  plugins: [require('flowbite/plugin')],
+  plugins: [
+    require("tailwindcss-animation-delay"),
+    require('flowbite/plugin')],
 };
