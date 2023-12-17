@@ -16,24 +16,24 @@ import React, { useRef } from 'react';
 import AdPic from '../../Abayas photos/AD.jpg'
 import { useInView } from "react-intersection-observer"
 function AD() {
-  const [ref, inView] = useInView({ threshold: 0.5 })
+  const [ref, inView] = useInView({ threshold: 0.2 })
 
   return (
     <>
-    <div ref={ref} className=' grid md:grid-cols-2 lg:mx-auto lg:mt-24 mt-16 mx-4 gap-8'>
+      <div ref={ref} className=' grid md:grid-cols-2 lg:mx-auto lg:mt-24 mt-16 mx-2 gap-8'>
         <div className={inView ? "fade-in-left" : null}>
-          
-            <img className=" rounded-2xl" src={AdPic}/>
-            </div>
-        <div className={`${inView ? "fade-in-left" : null} font-primary from-neutral-800 text-5xl  text-center lg:mt-48 text-gray-800 font-semibold`}> Holiday Abayas are up to 40% off
-        <div className='font-primary from-neutral-800 text-2xl text-justify mt-12 mx-4 font-normal'> From office to parties to family gatherings, find your dream speacial occasion abaya at our holiday sale!</div>
-         
-        </div>
-       
-        
 
-    </div>
-</>
+          <img className=" rounded-2xl" src={AdPic} />
+        </div>
+        <div className={`${inView ? "fade-in-left" : null} font-primary from-neutral-800 md:text-5xl text-3xl  text-left lg:mt-48 text-gray-800 font-semibold`}> Holiday Abayas are up to 40% off
+          <div className='font-primary from-neutral-800 md:text-2xl text-lg  text-left mt-12 mx-4 font-normal'> From office to parties to family gatherings, find your dream speacial occasion abaya at our holiday sale!</div>
+
+        </div>
+
+
+
+      </div>
+    </>
   );
 }
 

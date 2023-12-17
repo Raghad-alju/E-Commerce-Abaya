@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import React, { useContext, useEffect, useState, useMemo } from "react";
+import React, { useContext, useEffect, useState, memo, useRef, useCallback } from "react";
 
 import colored from "../ProductLists/colored";
 import winter from "../ProductLists/winter";
@@ -39,12 +39,11 @@ export const allProducts = [
   ...casual,
   ...dresses,
 ];
-export default function Products() {
+function Products() {
   const params = useParams();
   const cart = useContext(CartContext);
-
   var pageContents = [];
-
+  var i=0;
   switch (params.catogorey) {
     case "Trending":
       pageContents = [...trendingProducts];
@@ -82,30 +81,17 @@ export default function Products() {
 
   const [sortedContents, setSortedcontents] = useState([...pageContents]);
 
-  const refsById = useMemo(() => {
-		const refs = {}
-		sortedContents.forEach((product) => {
-			refs[product.id] = React.createRef(null)
-		})
-    console.log(refs)
-		return refs
-	}, [])
-  
 
-  useEffect(()=>{ for(let i=0;i<refsById.length;i++){
-    console.log(refsById[i].current.className)}},[])
-    
-  
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   useEffect(() => {
     setSortedcontents(pageContents);
     setShowProducts(false);
     clearTimeout();
-    for(let i=0;i<refsById.length;i++){
-      console.log(refsById[i].current.className)
-    // setTimeout(()=>{var val=refsById[i].current.className; console.log(val)},1000)
-    // clearTimeout()
-  }
+
   }, [params.catogorey]);
 
   const [showProducts, setShowProducts] = useState(false);
@@ -113,52 +99,13 @@ export default function Products() {
 
   const [searchedList, setSearchedList] = useState([]);
 
+  
   function updateSearchList(list) {
     setSearchedList(list);
+    setShowProducts(!showProducts)
   }
 
-  
-  
 
-  function MainContainer({ list }) {
-    return (
-      <>
-        {list.map((product,index) => {
-          return (
-            
-            <div 
-              style={{animationDelay: index / 25 + "s"}}
-              className={`bounce-in-top bg-white border border-gray-200 rounded-lg shadow `}
-              hidden={!showProducts}
-            >
-              <a href="#">
-                <img class="rounded-t-lg" src={product.img} alt="" />
-              </a>
-              <div class="p-5">
-                <Link to={`/products/Trending/${product.id}`}>
-                  <h5 class="mb-2 text-lg  tracking-tight text-gray-900   font-primary line-clamp-1">
-                    {product.name}
-                  </h5>
-                </Link>
-                <p class=" inline-block mb-3 font-normal text-gray-700 font-primary text-lg">
-                  {product.price}$
-                </p>
-                <button
-                  class="inline-flex float-right  items-center  px-3 py-2 text-sm font-primary text-center  bg-blue-sky text-pastel-yellow rounded-lg hover:bg-gray-800 hover:text-white focus:ring-1 focus:outline-none focus:ring-gray-300  mb-2  "
-                  onClick={() => {
-                    cart.addProductToCart(product);
-                  }}
-                >
-                  Add
-                  <img className="ml-2 w-4 h-4" src={cartIcon} />
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </>
-    );
-  }
 
   return (
     <>
@@ -174,26 +121,30 @@ export default function Products() {
           <div className="flex w-[40rem] h-32 mx-2 rounded-lg mt-0   border-[0.1px] border-gray-300 max-md:hidden   ">
             <ul className=" p-4 font-secondry text-sm">
               <li>Sort Price:</li>
-              <li className="ml-4 mt-2">
+              <li className="ml-4 mt-2 p-1 rounded-md hover:bg-gray-200 ">
                 <img className="float-left w-4 h-4 " src={sortTop} />{" "}
                 <button
-                  className=" hover:underline decoration-2 decoration-solid decoration-indigo-900"
+                  className="  decoration-indigo-900"
                   onClick={() => {
                     const val = sort(pageContents).asc((a) => a.price);
                     setSortedcontents(val);
+                    setShowProducts(!showProducts)
                   }}
                 >
                   lowest to highest
                 </button>
               </li>
-              <li className="ml-4 mt-2">
+              <li className="ml-4 p-1 rounded-md hover:bg-gray-200">
                 {" "}
                 <img className="float-left w-4 h-4 " src={sortBottom} />
                 <button
-                  className=" hover:underline decoration-2 decoration-solid decoration-indigo-900"
+                  className=" decoration-indigo-900"
+                 
                   onClick={() => {
+                  
                     const val = sort(pageContents).desc((a) => a.price);
                     setSortedcontents(val);
+                    setShowProducts(!showProducts)
                   }}
                 >
                   highest to lowest
@@ -205,12 +156,45 @@ export default function Products() {
           {/*main container*/}
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-[165rem] ">
             <LoadingSpinner showProducts={showProducts} />
-            <MainContainer
-              list={searchedList.length == 0 ? sortedContents : searchedList}
-            />
+          
+              {(searchedList.length == 0 ? sortedContents : searchedList).map((product, index ) => {
+          return (
+            
+            <div
+              style={{ animationDelay: index / 25 + "s" }}
+              className='bounce-in-top bg-white border border-gray-200 rounded-lg shadow'
+              hidden={!showProducts}
+            >
+              <Link to={`/products/Trending/${product.id}`}>
+                <img className="rounded-t-lg" src={product.img} alt="" />
+              </Link>
+              <div className="p-5 h-24">
+                <Link to={`/products/Trending/${product.id}`}>
+                  <p className="mb-2 text-md  tracking-tight text-gray-900 font-primary line-clamp-1 ">
+                    {product.name}
+                  </p>
+                </Link>
+                <p className=" inline-block mb-3 font-normal text-gray-700 font-primary text-lg">
+                  {product.price}$
+                </p>
+                <button
+                  className="inline-flex float-right  items-center  px-3 py-2 text-sm font-primary text-center  bg-blue-sky text-pastel-yellow rounded-lg hover:bg-gray-800 hover:text-white focus:ring-1 focus:outline-none focus:ring-gray-300  mb-2  "
+                  onClick={() => {
+                    cart.addProductToCart(product);
+                  }}
+                >
+                  Add
+                  <img className="ml-2 w-4 h-4" src={cartIcon} />
+                </button>
+              </div>
+            </div>
+          );
+        })}
           </div>
         </div>
       </div>
     </>
   );
 }
+
+export default Products;

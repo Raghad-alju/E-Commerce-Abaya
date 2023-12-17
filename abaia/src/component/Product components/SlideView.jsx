@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick'
 import trendingProducts from "../../ProductLists/trendingProducts";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 export default function SlideView(){
     const slider = useRef(null);
 
@@ -87,13 +88,13 @@ export default function SlideView(){
         
       trendingProducts.map((product)=>{
             return <div className=" bg-white border border-gray-200 rounded-lg shadow h-40 ">
-            <a href="#">
+            <Link to={`/products/Trending/${product.id}`}>
                 <img class="h-20 w-40 object-top object-cover rounded-t-lg" src={product.img} alt="" />
-            </a>
+            </Link>
             <div class="p-5">
-                <a href="#">
+                <Link to={`/products/Trending/${product.id}`}>
                 <h5 class="mb-2 lg:text-lg text-xs  tracking-tight text-gray-900   font-primary ">{product.name}</h5>
-                </a>
+                </Link>
                 
             </div>
         </div>

@@ -12,7 +12,7 @@ export default function BreadCrums({params}){
           <li className="inline-flex items-center">
             <Link
               to="/"
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white"
+              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 "
             >
               <svg
                 class="w-3 h-3 me-2.5"
@@ -44,7 +44,7 @@ export default function BreadCrums({params}){
                   d="m1 9 4-4-4-4"
                 />
               </svg>
-              <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+              <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 ">
                 {params.catogorey}
               </span>
             </div>

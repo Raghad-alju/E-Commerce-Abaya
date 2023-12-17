@@ -52,12 +52,7 @@ const dresses=[
         img:images['dark_blue.jpg'],
         price:46
     },
-    {
-        id: '8607',
-        name:'Yellow Dress',
-        img:images['dark_green.jpg'],
-        price:33
-    },
+  
    
  
 ]

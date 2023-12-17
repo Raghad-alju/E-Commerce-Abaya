@@ -15,8 +15,7 @@
 import React from 'react';
 
 import catogires from './catogires.js'
-//let Logo = require('./images/scaler-logo.png')
-
+import { Link } from 'react-router-dom';
 
 
 function Explore() {
@@ -25,9 +24,9 @@ function Explore() {
             <div className="inline-grid justify-center grid-cols-3 md:grid-cols-5 gap-4 lg:pt-9 lg:pb-4 p-4 max-sm:row-span-2 ">
                 {catogires.map((cat) => {
                     return (
-                        <div key={cat.id}>
-                            <img className=" h-auto max-w-full rounded-lg shadow-xl" src={cat.image} alt="catogry image" />
-                            <div className="flex justify-center font-primary max-sm:text-xs py-2">{cat.name}</div>
+                        <div className=' hover:bg-white-yellow md:p-2 rounded-lg ' key={cat.id}>
+                            <Link to={`products/${cat.name}`}><img className=" hover:brightness-75 h-auto max-w-full rounded-lg shadow-xl cursor-pointer" src={cat.image} alt="catogry image" /></Link>
+                            <Link to={`products/${cat.name}`} className="flex justify-center font-primary max-sm:text-xs py-2 cursor-pointer hover:text-gray-600">{cat.name}</Link>
                         </div>)
                 })}
 

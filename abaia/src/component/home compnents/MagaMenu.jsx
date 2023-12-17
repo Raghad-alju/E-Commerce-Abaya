@@ -37,12 +37,12 @@ const dashboardCato=[
     },
 ]
 
-var drawerTranstion=''
+var drawerTranstion='fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-100 w-64'
 function MagaMenu() {
 
   const [bg,bgState]=useState(true)
   const drawerRef=useRef();
-  const listItemStyle = `block py-2 px-3 md:p-0 rounded md:hover:bg-transparent hover:underline decoration-gray-700  decoration-2  md:border-0 font-primary text-gray-700`
+  const listItemStyle = `block py-2 px-3 md:px-1 md:py-0 rounded md:bg-transparent hover:bg-white-pastel-yellow  active:bg-violet-700 focus:white-pastel-yellow  decoration-gray-700  decoration-2  md:border-0 font-primary text-gray-700`
   function drawerTranstionDrawer(){
     drawerTranstion=drawerRef.current.className
     drawerRef.current.className = drawerTranstion + ' transition-transform translate-x-0 '
@@ -53,8 +53,8 @@ function MagaMenu() {
     drawerRef.current.className = drawerTranstion
     setBgState(true)
     
-    
   }
+
  
   function setBgState(val){
     bgState(val)
@@ -63,12 +63,12 @@ function MagaMenu() {
 
   return (
     <>
-    <div className=' fixed top-0  backdrop-blur bg-blend-saturation h-screen w-screen z-30' hidden={bg} onClick={closeDrawer}></div>
+    <div className='  fixed top-0  backdrop-blur bg-blend-saturation focus: h-screen w-screen z-30' hidden={bg} onClick={closeDrawer}></div>
     
     <nav className="fixed border-gray-200 bg-white-yellow w-full z-10 top-11 ">
       <div className="max-w-screen-xl flex flex-wrap md:items-center md:justify-center  mx-auto  md:p-2  pt-1">
 
-        <button onClick={drawerTranstionDrawer}  type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 da" >
+        <button onClick={drawerTranstionDrawer}  type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " >
           <span className="sr-only">drawerTranstion main menu</span>
 
           <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -97,7 +97,7 @@ function MagaMenu() {
     </nav>
        {/*drawer*/}
        <div ref={drawerRef} className="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-100 w-64 " tabindex="-1" aria-labelledby="drawer-navigation-label">
-       <h5  className="text-base font-semibold text-gray-500 uppercase ">Categories</h5>
+       <h5  className="text-base font-primary text-gray-500  ">Categories</h5>
 
        <button onClick={closeDrawer} className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center " >
 
@@ -114,10 +114,10 @@ function MagaMenu() {
              return (
                <>
                <li key={cat.id}>
-             <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 ">
+             <Link to={`products/${cat.name}`} onClick={closeDrawer} className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 ">
                <img className=" relative w-16 h-16 rounded-full text-gray-700" src={cat.img}/>
                <span className="ms-3 font-primary">{cat.name}</span>
-             </a>
+             </Link>
            </li>
            <span className=' underline decoration-gray-300  text-transparent'>-----------------------------</span>
              </>

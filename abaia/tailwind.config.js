@@ -14,7 +14,8 @@ module.exports = {
       'blue-sky': '#5d667a',
       'white-gray': '#DEDAD7',
       'white-yellow': '#dccea6',
-      'pastel-yellow':'#f4e89c'
+      'pastel-yellow':'#f4e89c',
+      'white-pastel-yellow':'#e9e2ba'
     },
     extend: {
       

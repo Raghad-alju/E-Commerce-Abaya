@@ -21,6 +21,7 @@ import Slider from 'react-slick'
 import cartIcon from './../../svg icons/cart-2-svgrepo-com.png'
 import trendingProducts from '../../ProductLists/winter';
 import {CartContext} from '../../App'
+import { Link } from "react-router-dom";
 
 function Trending () {
     const cart=useContext(CartContext);
@@ -94,7 +95,7 @@ function SampleArrow({buttonDirection}) {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1
         }
       }
@@ -111,16 +112,16 @@ return (
             
           trendingProducts.map((product)=>{
                 return <div className=" bg-white border border-gray-200 rounded-lg shadow ">
-                <a href="#">
-                    <img class="rounded-t-lg" src={product.img} alt="" />
-                </a>
-                <div class="p-5">
-                    <a href="#">
-                    <h5 class="mb-2 text-xl  tracking-tight text-gray-900   font-primary line-clamp-1">{product.name}</h5>
-                    </a>
-                    <p class=" inline-block mb-3 font-normal text-gray-700 font-primary text-lg">{product.price}</p>
-                    <button class="inline-flex items-center float-right px-3 py-2 text-sm font-primary text-center  bg-blue-sky text-pastel-yellow rounded-lg hover:bg-gray-800 hover:text-white focus:ring-1 focus:outline-none focus:ring-gray-300  mb-2  " onClick={()=>{cart.addProductToCart(product)}}>
-                        Add to cart
+                <Link to={`/products/Trending/${product.id}`}>
+                    <img className="rounded-t-lg" src={product.img} alt="" />
+                </Link>
+                <div className="p-5">
+                    <Link href="#">
+                    <h5 className="mb-2 text-xl  tracking-tight text-gray-900 font-primary line-clamp-1">{product.name}</h5>
+                    </Link>
+                    <p className=" inline-block mb-3 font-normal text-gray-700 font-primary text-lg">{product.price}$</p>
+                    <button className="inline-flex items-center float-right px-3 py-2 text-sm font-primary text-center  bg-blue-sky text-pastel-yellow rounded-lg hover:bg-gray-800 hover:text-white focus:ring-1 focus:outline-none focus:ring-gray-300  mb-2  " onClick={()=>{cart.addProductToCart(product)}}>
+                        Add <span className="max-md:hidden ml-1">to cart</span>
                         <img className='ml-2 w-4 h-4' src={cartIcon}/>
                     </button>
                 </div>
