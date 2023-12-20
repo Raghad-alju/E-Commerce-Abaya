@@ -26,7 +26,7 @@ function Footer() {
                             <span className="self-center text-2xl font-semibold whitespace-nowrap text-pastel-yellow">NA Abayas</span>
                         </a>
                     </div>
-                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-4">
                         <div>
                             <h2 className="mb-6 text-sm font-semibold text-pastel-yellow uppercase ">Resources</h2>
                             <ul className="text-gray-100 dark:text-gray-400 font-medium">
@@ -37,6 +37,14 @@ function Footer() {
                                 <li className="mb-4">
                                     <a href="https://flowbite.com/" className="hover:underline">Flowbite</a>
                                 </li>
+                             
+                            </ul>
+
+                        </div>
+                        <div>
+                            <div className='h-10'></div>
+                            <ul className="text-gray-100 dark:text-gray-400 font-medium">
+
                                 <li className="mb-4">
                                     <a href="https://hawraaabaya.com/#" className="hover:underline">Hawraa Images</a>
                                 </li>
@@ -44,6 +52,7 @@ function Footer() {
                                     <a href="https://pinkit.sa/" className="hover:underline">Pinkit Images</a>
                                 </li>
                             </ul>
+                            
                         </div>
                         <div>
                             <h2 className="mb-6 text-sm font-semibold text-pastel-yellow uppercase ">Follow Me</h2>

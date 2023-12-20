@@ -68,7 +68,7 @@ function MagaMenu() {
     <nav className="fixed border-gray-200 bg-white-yellow w-full z-10 top-11 ">
       <div className="max-w-screen-xl flex flex-wrap md:items-center md:justify-center  mx-auto  md:p-2  pt-1">
 
-        <button onClick={drawerTranstionDrawer}  type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " >
+        <button onClick={drawerTranstionDrawer}  type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-white-pastel-yellow focus:outline-none focus:ring-2 focus:ring-gray-200 " >
           <span className="sr-only">drawerTranstion main menu</span>
 
           <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">

@@ -24,9 +24,9 @@ export default function Cart({ product }) {
   if (cart.cartContents.length > 0)
     return (
       <>
-        <div className=' mt-36 lg:w-[60rem] lg:mx-auto mx-10 max-sm:mx-5  relative'>
+        <div className=' mt-36 lg:w-[60rem] lg:mx-auto mx-10 max-sm:mx-2  relative'>
           <h1 hidden={!showText} className=" font-primary text-lg mx-auto">Thank you for testing the application :)</h1>
-          <div className=" w-full h-auto  border-[1px] border-gray-400 p-10 rounded-lg  ">
+          <div className=" w-full h-auto  border-[1px] border-gray-400 p-10 rounded-lg max-sm:p-3  ">
             <div className=" relative text-2xl font-primary mb-5">Cart Products</div>
             {
 
@@ -61,7 +61,7 @@ export default function Cart({ product }) {
             }
             <div className=" clear-both my-14 p-[0.5px] w-3/4 mx-auto bg-gray-500 "></div>
             <div className="flex">
-              <button onClick={() => setShowText(true)} className=" bg-blue-sky p-2 px-6 rounded-lg text-md font-primary text-pastel-yellow shadow-md shadow-gray-400 md:ml-24 ml-10" >Checkout</button>
+              <button onClick={() => setShowText(true)} className=" bg-blue-sky p-2 px-6 rounded-lg text-md font-primary max-sm:ml-0 text-pastel-yellow shadow-md shadow-gray-400 md:ml-24 ml-10" >Checkout</button>
               <div className=" ml-10 font-secondry text-lg">
                 <p><span className="font-bold">Items:</span> {cart.cartContents.reduce((prev, curr) => { return prev + curr.quntity }, 0)}</p>
                 <p><span className="font-bold">Total price:</span> {cart.cartContents.reduce((prev, curr, index) => { return prev + curr.price * curr.quntity }, 0)}$ </p>

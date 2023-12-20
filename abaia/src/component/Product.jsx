@@ -28,7 +28,7 @@ export default function Product() {
                     <div className=" pb-6 font-primary text-3xl max-md:clear-both   max-md:pt-6 ">
                         {product.name}
                     </div>
-                    <div className=" mb-5 font-primary" >
+                    <div className=" mb-5 font-primary text-lg p-1  max-sm:bg-gray-300 max-sm:w-fit rounded-lg" >
                        Price: {product.price}$
                     </div>
                     <div className=" font-secondry m-5">
@@ -40,7 +40,7 @@ export default function Product() {
                     </button>
                 </div>
                 <div className=" h-[0.5px] w-1/2 mx-auto bg-blue-sky clear-both mt-16"></div>
-                <div className=" font-primary  pt-20 pb-12 md:text-2xl text-lg clear-both">You might also like</div>
+                <div className=" font-primary  pt-20 pb-12 text-2xl  clear-both">You might also like</div>
                 <SlideView />
             </div>
         </>

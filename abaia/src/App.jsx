@@ -1,14 +1,17 @@
+
+
+
+import React, { useRef, useState, createContext, useContext, lazy ,Suspense } from 'react';
 import Home from './component/Home.jsx'
-import React, { useRef, useState, createContext, useContext } from 'react';
-import Cart from './component/Cart.jsx'
-import Products from './component/Products.jsx';
-import Product from './component/Product.jsx';
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+
+
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import Root from './component/Root.js'
 export const CartContext = createContext({ cartContents: [], addProductToCart: () => { },handleQuan:()=>{} });
+const Cart= lazy(()=>import('./component/Cart.jsx'));
+const Products= lazy(()=>import('./component/Products.jsx'));
+const Product= lazy(()=>import('./component/Product.jsx'));
 
 const router = createBrowserRouter([
 
@@ -22,15 +25,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/products/:catogorey',
-        element: <Products />
+        element: <Suspense fallback={<div className='h-screen w-full'></div>}><Products /></Suspense>
       },
       {
         path: '/products/:catogorey/:prodId',
-        element: <Product />
+        element: <Suspense><Product /></Suspense>
       },
       {
         path: '/cart',
-        element: <Cart />
+        element: <Suspense><Cart /></Suspense>
       },
 
     ]
