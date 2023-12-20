@@ -4,7 +4,8 @@
 
 instructions on setting up your project locally.
 To get a local copy up and running follow these simple steps.
-
+ [Live Demo](https://na-abaya.web.app/)
+ 
 ### Prerequisites
 
 
@@ -37,7 +38,6 @@ To get a local copy up and running follow these simple steps.
 
 This a demo project to show case my front-end skills.
 
- [Live Demo](https://na-abaya.web.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
